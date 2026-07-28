@@ -1,0 +1,128 @@
+RESTAURANTE BASSALO — INSTRUCCIONES PARA EL DUEÑO
+==================================================
+
+QUÉ ES ESTO
+-----------
+Tu web es un único archivo: "index.html" (ábrelo haciendo doble clic y se abre
+en el navegador, como cualquier página web) más una carpeta "images" con las
+fotos y una carpeta "videos" con el vídeo de portada. No necesita instalar
+nada, ni internet especial, ni programación.
+
+(En esta carpeta también están "Bassalo.dc.html" y "support.js": son el
+archivo de diseño original del que salió la web. No hacen falta para que la
+página funcione y NO hay que subirlos a internet.)
+
+
+CÓMO EDITAR TEXTOS O EL TELÉFONO
+---------------------------------
+1. Botón derecho sobre "index.html" → Abrir con → Bloc de notas.
+2. Busca (Ctrl+B / Ctrl+F) el texto que quieras cambiar, por ejemplo:
+   "968 79 47 77" o "Brasa de siempre, sabor de casa."
+3. Cámbialo tal cual, sin tocar los símbolos < > que hay alrededor.
+4. Guarda el archivo (Ctrl+S) y recarga la página en el navegador para ver
+   el cambio.
+
+Nota sobre el teléfono: el número aparece varias veces (arriba, en el hero,
+en reservas, en contacto...). Si lo cambias, cámbialo en TODOS los sitios
+donde aparezca, incluyendo dentro de "tel:+34968794777" (ahí va sin espacios
+y con +34 delante).
+
+La web está en español e inglés a la vez: cada bloque de texto español está
+marcado como <div class="lang es"> y justo debajo tiene su gemelo en inglés
+<div class="lang en">. Si cambias un texto, recuerda cambiar también su
+equivalente en inglés si quieres que ambos idiomas digan lo mismo.
+
+
+CÓMO CAMBIAR UNA FOTO
+----------------------
+1. Entra en la carpeta "images".
+2. Sustituye el archivo por tu foto nueva PERO MANTENIENDO EXACTAMENTE EL
+   MISMO NOMBRE (por ejemplo, si cambias "secreto-brasa.webp", tu foto nueva
+   también debe llamarse "secreto-brasa.webp"). Puedes guardar tu foto como
+   .jpg o .png si no sabes crear un .webp; en ese caso avisa a tu diseñador
+   para que actualice esa única referencia en el archivo.
+   Para convertir una foto a .webp sin instalar nada puedes usar
+   https://squoosh.app (arrastras la foto, eliges WebP y descargas).
+3. Guarda y recarga la página.
+
+Vídeo de portada (hero): carpeta "videos", archivo "hero-bassalo.mp4". Se
+reproduce en bucle y sin sonido automáticamente. Está comprimido a 1,3 MB
+(1280x720, 14 segundos) para que cargue rápido con datos móviles.
+
+Cómo funciona la carga: al abrir la web se ve primero la foto
+"images/hero-frame.webp", que es el primer fotograma del vídeo, y el vídeo
+entra por detrás en cuanto está listo. Por eso la portada aparece al instante
+aunque la conexión sea mala. Si el visitante lleva activado el ahorro de datos
+o va con una conexión muy lenta, el vídeo directamente no se descarga y se
+queda la foto fija.
+
+Para cambiar el vídeo, sustituye el archivo manteniendo el mismo nombre
+"hero-bassalo.mp4" (vídeo horizontal, el audio da igual porque no se escucha).
+Importante: intenta que NO pase de 2 MB. Si tu vídeo pesa mucho más, pásalo
+antes por un compresor gratuito como https://www.freeconvert.com/video-compressor
+o pídemelo a mí. Y si cambias el vídeo, cambia también la foto
+"images/hero-frame.webp" por un fotograma del nuevo, o se verá una imagen que
+no corresponde durante el primer segundo.
+
+Si el vídeo falta o no carga, la portada muestra automáticamente la foto
+"secreto-brasa.webp" de respaldo.
+
+Fotos actuales (todas en .webp, que pesa menos y carga más rápido):
+ - secreto-brasa.webp    → imagen de respaldo del hero (mientras carga el vídeo) y carta
+ - ensalada-cabra.webp   → carta
+ - cazuela-bassalo.webp  → carta y sección "Sobre Bassalo"
+ - foie-frutos-rojos.webp→ carta
+ - logo-bassalo.webp     → logo (cabecera y pie de página)
+ - hero-frame.webp       → primer fotograma del vídeo (se ve mientras carga)
+ - comedor-bassalo.webp  → fondo de la sección "Reserva tu mesa"
+
+
+HORARIOS Y EL AVISO DE "ABIERTO / CERRADO"
+-------------------------------------------
+La web calcula sola si estáis abiertos en este momento y marca el día de hoy
+en la tabla de horarios. Está configurado como: cerrado los martes, y el resto
+de la semana de 9:00 a 16:00.
+
+Si algún día cambian los horarios hay que tocarlo en DOS sitios dentro de
+"index.html":
+ - En la tabla de horarios de la sección "Ubicación y contacto" (los textos
+   "9:00–16:00" y "Cerrado"), en español y en inglés.
+ - Al final del archivo, en la parte de JavaScript, en estas tres líneas:
+       var CLOSED_DAYS = [2];        (2 = martes; 0 = domingo, 1 = lunes...)
+       var OPEN_H = 9, CLOSE_H = 16;
+Si te lía, pídemelo y lo cambio yo.
+
+
+PENDIENTE DE TU PARTE
+-----------------------
+- Las 3 reseñas de la sección "Los que han pasado por aquí" son EJEMPLOS
+  provisionales. Sustitúyelas por reseñas reales de Facebook o Google en
+  cuanto puedas (busca "María G.", "Antonio R." y "Lucía M." en el archivo).
+- Las 4 fichas de "La Carta" llevan nombres de plato orientativos según tus
+  fotos, sin precios. Puedes añadir más fichas copiando el bloque de una
+  ficha completa (desde <article class="dish"> hasta </article>) y pegándolo,
+  cambiando foto, nombre y descripción.
+
+
+CÓMO SUBIRLA A INTERNET (GitHub Pages, gratis)
+------------------------------------------------
+1. Crea una cuenta en https://github.com si no tienes.
+2. Crea un repositorio nuevo (botón "New repository"), público, sin ningún
+   archivo inicial.
+3. Dentro del repositorio, botón "Add file" → "Upload files".
+4. Arrastra el archivo "index.html" y las carpetas "images" y "videos"
+   completas. (No hace falta subir "Bassalo.dc.html", "support.js" ni este
+   mismo archivo de instrucciones.)
+5. Click "Commit changes".
+6. Ve a Settings → Pages, elige la rama "main" y guarda. En un par de
+   minutos tu web estará publicada en una dirección tipo
+   https://tu-usuario.github.io/tu-repositorio/
+
+También puedes arrastrar esos mismos archivos a Hostinger o cualquier
+hosting que acepte archivos estáticos — funciona igual.
+
+
+DUDAS
+-----
+Cualquier cambio más grande (nueva sección, rediseño, más idiomas) mejor
+pídemelo directamente.
