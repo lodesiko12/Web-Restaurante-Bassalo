@@ -1,0 +1,14 @@
+# Archivos que crea el sistema operativo (no hacen falta en la web)
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Carpetas de herramientas y editores
+.claude/
+.vscode/
+node_modules/
+
+# Archivos temporales
+*.tmp
+*~

@@ -1,0 +1,612 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- Para el dueño del restaurante: este archivo se puede abrir con el Bloc de notas para cambiar textos o el teléfono. Para cambiar una foto, sustituye el archivo correspondiente dentro de la carpeta "images" manteniendo el mismo nombre. -->
+<helmet>
+<title>Restaurante Bassalo — Mesón Asador en Yecla</title>
+<meta name="description" content="Restaurante Bassalo: mesón asador en Yecla con brasa de leña, producto de cercanía y las recetas de toda la vida. Reserva tu mesa al 968 79 47 77.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:100px;}
+body{margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+img{max-width:100%;display:block;}
+h1,h2,h3,p{margin:0;}
+button{font-family:inherit;cursor:pointer;}
+a{color:#D35400;text-decoration:none;}
+a:hover{color:#C0392B;}
+::selection{background:#D35400;color:#F9F6F0;}
+@keyframes kenburns{from{transform:scale(1) translateY(0);}to{transform:scale(1.15) translateY(-18px);}}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+@keyframes emberPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(211,84,0,0.45);}50%{opacity:0.5;box-shadow:0 0 0 6px rgba(211,84,0,0);}}
+@keyframes bounceChevron{0%,100%{transform:translateY(0);opacity:0.65;}50%{transform:translateY(10px);opacity:1;}}
+@keyframes floatSlow{0%,100%{transform:translate(0,0);}50%{transform:translate(10px,-16px);}}
+</style>
+</helmet>
+<div style="--accent:{{ accent }}; --accent-dark:color-mix(in oklch, var(--accent) 80%, black); position:relative; overflow-x:hidden; width:100%; min-height:100vh; background:#F9F6F0; color:#2C2523; font-family:'Lato',sans-serif;">
+
+<header style="{{ headerBaseStyle }}">
+  <div style="{{ headerGradientLayerStyle }}"></div>
+  <div style="{{ headerSolidLayerStyle }}"></div>
+  <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px);">
+    <a href="#inicio" aria-label="Restaurante Bassalo — inicio" style="display:flex;align-items:center;">
+      <img src="images/logo-bassalo.png" alt="Restaurante Bassalo" style="{{ logoHeightStyle }}">
+    </a>
+    <nav style="{{ desktopNavDisplay }}">
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <a href="#carta" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Carta</a>
+        <a href="#sobre-bassalo" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Sobre Bassalo</a>
+        <a href="#resenas" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Reseñas</a>
+        <a href="#reserva" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Reserva</a>
+        <a href="#contacto" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Contacto</a>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <a href="#carta" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Menu</a>
+        <a href="#sobre-bassalo" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">About</a>
+        <a href="#resenas" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Reviews</a>
+        <a href="#reserva" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Reservations</a>
+        <a href="#contacto" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ navLinkColor }};" style-hover="color:#D35400;">Contact</a>
+      </sc-if>
+    </nav>
+    <div style="display:flex;align-items:center;gap:clamp(12px,2vw,20px);">
+      <div style="display:flex;align-items:center;gap:6px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.04em;">
+        <button onClick="{{ setLangEs }}" style="background:none;border:none;padding:4px 2px;color:{{ navLinkColor }};{{ langEsStyle }}">ES</button>
+        <span style="color:{{ navLinkColor }};opacity:0.4;">/</span>
+        <button onClick="{{ setLangEn }}" style="background:none;border:none;padding:4px 2px;color:{{ navLinkColor }};{{ langEnStyle }}">EN</button>
+      </div>
+      <a href="tel:+34968794777" style="{{ headerPhoneDisplay }}align-items:center;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.03em;padding:12px 22px;border-radius:8px;transition:background .2s ease,transform .2s ease;" style-hover="background:var(--accent-dark);transform:translateY(-2px);">968 79 47 77</a>
+      <button onClick="{{ openMobileNav }}" aria-label="Abrir menú" style="{{ hamburgerDisplay }}flex-direction:column;gap:5px;background:none;border:none;padding:8px;">
+        <div style="width:24px;height:2px;background:{{ navLinkColor }};"></div>
+        <div style="width:24px;height:2px;background:{{ navLinkColor }};"></div>
+        <div style="width:24px;height:2px;background:{{ navLinkColor }};"></div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div style="{{ mobileNavStyle }}">
+  <button onClick="{{ closeMobileNav }}" aria-label="Cerrar menú" style="position:absolute;top:24px;right:24px;width:44px;height:44px;background:none;border:none;">
+    <div style="position:relative;width:24px;height:24px;margin:0 auto;">
+      <div style="position:absolute;top:11px;left:0;width:24px;height:2px;background:#F9F6F0;transform:rotate(45deg);"></div>
+      <div style="position:absolute;top:11px;left:0;width:24px;height:2px;background:#F9F6F0;transform:rotate(-45deg);"></div>
+    </div>
+  </button>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:28px;">
+    <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+      <a href="#carta" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Carta</a>
+      <a href="#sobre-bassalo" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Sobre Bassalo</a>
+      <a href="#resenas" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Reseñas</a>
+      <a href="#reserva" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Reserva</a>
+      <a href="#contacto" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Contacto</a>
+      <a href="tel:+34968794777" style="margin-top:16px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.03em;padding:16px 32px;border-radius:8px;">Llamar: 968 79 47 77</a>
+    </sc-if>
+    <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+      <a href="#carta" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Menu</a>
+      <a href="#sobre-bassalo" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">About</a>
+      <a href="#resenas" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Reviews</a>
+      <a href="#reserva" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Reservations</a>
+      <a href="#contacto" onClick="{{ closeMobileNav }}" style="font-family:'Oswald',sans-serif;font-weight:600;font-size:28px;text-transform:uppercase;color:#F9F6F0;">Contact</a>
+      <a href="tel:+34968794777" style="margin-top:16px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.03em;padding:16px 32px;border-radius:8px;">Call: 968 79 47 77</a>
+    </sc-if>
+  </div>
+</div>
+
+<section id="inicio" data-screen-label="Hero" style="position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;align-items:flex-end;">
+  <video ref="{{ setHeroVideoRef }}" src="videos/hero-bassalo.mp4" poster="images/hero-frame.jpg" preload="auto" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;{{ heroImgStyle }}"></video>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(44,37,35,0.55) 0%, rgba(44,37,35,0.45) 40%, rgba(44,37,35,0.94) 100%);"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 85%, rgba(211,84,0,0.4), transparent 60%);"></div>
+  <div style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:140px clamp(20px,5vw,48px) clamp(56px,9vw,96px);width:100%;">
+    <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.1s;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:#D35400;margin-bottom:20px;">Mesón · Asador · Yecla</div>
+      <h1 style="animation:heroFadeUp .9s ease-out both;animation-delay:.22s;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(42px,9vw,92px);line-height:0.98;color:#F9F6F0;max-width:820px;">Brasa de siempre,<br>sabor de casa.</h1>
+      <p style="animation:heroFadeUp .9s ease-out both;animation-delay:.36s;font-family:'Lato',sans-serif;font-size:clamp(17px,1.8vw,20px);line-height:1.6;color:#F9F6F0;opacity:0.92;max-width:520px;margin-top:24px;">En Bassalo cuidamos cada plato como en casa: producto cercano, brasa de leña y las recetas que nos han hecho mesón de referencia en Yecla.</p>
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.5s;display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:36px;">
+        <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:18px 36px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;box-shadow:0 14px 30px -12px rgba(211,84,0,0.55);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 18px 36px -12px rgba(211,84,0,0.65);background:var(--accent-dark);">Llamar para pedir</a>
+        <a href="#carta" style="display:inline-flex;align-items:center;gap:6px;color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.03em;text-transform:uppercase;border-bottom:2px solid rgba(249,246,240,0.4);padding-bottom:4px;transition:border-color .25s ease;" style-hover="border-color:#F9F6F0;">Ver la carta ↓</a>
+      </div>
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.62s;display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;font-family:'Lato',sans-serif;font-size:14px;color:#F9F6F0;opacity:0.85;">
+        <span>C. Esperanza, 21 · Yecla</span>
+        <span style="display:flex;align-items:center;"><span style="{{ statusDotStyle }}"></span>{{ statusTextEs }}</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.1s;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:#D35400;margin-bottom:20px;">Inn · Grill House · Yecla</div>
+      <h1 style="animation:heroFadeUp .9s ease-out both;animation-delay:.22s;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(42px,9vw,92px);line-height:0.98;color:#F9F6F0;max-width:820px;">Wood-fire flavor,<br>home-style cooking.</h1>
+      <p style="animation:heroFadeUp .9s ease-out both;animation-delay:.36s;font-family:'Lato',sans-serif;font-size:clamp(17px,1.8vw,20px);line-height:1.6;color:#F9F6F0;opacity:0.92;max-width:520px;margin-top:24px;">At Bassalo we treat every dish like home cooking: local produce, real wood-fire grilling, and the recipes that made us a Yecla favorite.</p>
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.5s;display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:36px;">
+        <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:18px 36px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;box-shadow:0 14px 30px -12px rgba(211,84,0,0.55);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 18px 36px -12px rgba(211,84,0,0.65);background:var(--accent-dark);">Call to order</a>
+        <a href="#carta" style="display:inline-flex;align-items:center;gap:6px;color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.03em;text-transform:uppercase;border-bottom:2px solid rgba(249,246,240,0.4);padding-bottom:4px;transition:border-color .25s ease;" style-hover="border-color:#F9F6F0;">See the menu ↓</a>
+      </div>
+      <div style="animation:heroFadeUp .9s ease-out both;animation-delay:.62s;display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;font-family:'Lato',sans-serif;font-size:14px;color:#F9F6F0;opacity:0.85;">
+        <span>C. Esperanza, 21 · Yecla</span>
+        <span style="display:flex;align-items:center;"><span style="{{ statusDotStyle }}"></span>{{ statusTextEn }}</span>
+      </div>
+    </sc-if>
+  </div>
+  <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-right:2px solid rgba(249,246,240,0.75);border-bottom:2px solid rgba(249,246,240,0.75);transform:translateX(-50%) rotate(45deg);animation:bounceChevron 2s ease-in-out infinite;z-index:2;"></div>
+</section>
+
+<section id="carta" data-screen-label="Carta" ref="{{ setCartaRef }}" style="padding:clamp(48px,6vw,92px) clamp(20px,5vw,48px);max-width:1280px;margin:0 auto;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);{{ cartaRevealStyle }}">
+  <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+    <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+    <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">La Carta</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#4A231A;margin-top:10px;max-width:640px;">Especialidades de la casa</h2>
+    <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#2C2523;max-width:640px;margin-top:18px;">Trabajamos con producto de cercanía y brasa de leña para que cada plato sepa a lo de siempre. Estas son algunas de nuestras especialidades — la carta completa te espera en el mesón.</p>
+  </sc-if>
+  <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+    <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+    <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">The Menu</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#4A231A;margin-top:10px;max-width:640px;">House specialties</h2>
+    <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#2C2523;max-width:640px;margin-top:18px;">We work with local produce and real wood-fire grilling so every dish tastes like it should. Here are a few of our specialties — the full menu is waiting for you at the restaurant.</p>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,36px);margin-top:40px;">
+
+    <div style="background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -28px rgba(44,37,35,0.35);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -24px rgba(44,37,35,0.4);">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;">
+        <img src="images/ensalada-cabra.webp" alt="Ensalada de cabra y frutos secos" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" style-hover="transform:scale(1.08);">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">Para Empezar</div></sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">To Start</div></sc-if>
+      </div>
+      <div style="padding:22px;">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Ensalada de cabra y frutos secos</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Mezclum fresco, queso de cabra, bacon crujiente y frutos secos garrapiñados con nuestra vinagreta.</p>
+        </sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Goat cheese and nut salad</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Fresh mixed greens, goat cheese, crispy bacon and candied nuts with our house vinaigrette.</p>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -28px rgba(44,37,35,0.35);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -24px rgba(44,37,35,0.4);">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;">
+        <img src="images/secreto-brasa.webp" alt="Secreto ibérico a la brasa" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" style-hover="transform:scale(1.08);">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">A la Brasa</div></sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">From the Grill</div></sc-if>
+      </div>
+      <div style="padding:22px;">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Secreto ibérico a la brasa</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Secreto ibérico asado al punto sobre patatas panaderas, con pimientos de padrón recién fritos.</p>
+        </sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Grilled Iberian secreto</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Iberian secreto grilled to order over pan-fried potatoes, with fresh fried padrón peppers.</p>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -28px rgba(44,37,35,0.35);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -24px rgba(44,37,35,0.4);">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;">
+        <img src="images/cazuela-bassalo.webp" alt="Cazuela Bassalo" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" style-hover="transform:scale(1.08);">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">De la Casa</div></sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">House Favorite</div></sc-if>
+      </div>
+      <div style="padding:22px;">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Cazuela Bassalo</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Nuestra cazuela de siempre, gratinada y servida en barro para que llegue burbujeando a la mesa.</p>
+        </sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Cazuela Bassalo</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Our classic clay-pot stew, oven-gratinated and served bubbling straight to your table.</p>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -28px rgba(44,37,35,0.35);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -24px rgba(44,37,35,0.4);">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;">
+        <img src="images/foie-frutos-rojos.webp" alt="Micuit de foie con frutos rojos" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;" style-hover="transform:scale(1.08);">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">Postre de la Casa</div></sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:14px;left:14px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:6px;">House Dessert</div></sc-if>
+      </div>
+      <div style="padding:22px;">
+        <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Micuit de foie con frutos rojos</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">Foie micuit de la casa con frutos rojos, pan de pasas y un toque dulce que cierra la comida por todo lo alto.</p>
+        </sc-if>
+        <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,24px);color:#4A231A;">Foie micuit with red berries</h3>
+          <p style="font-family:'Lato',sans-serif;font-size:15px;line-height:1.6;color:#2C2523;margin-top:10px;">House foie micuit with red berries, raisin bread and a sweet finish to close the meal in style.</p>
+        </sc-if>
+      </div>
+    </div>
+
+  </div>
+
+  <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between;margin-top:40px;padding-top:36px;border-top:1px solid rgba(74,35,26,0.15);">
+      <p style="font-family:'Oswald',sans-serif;font-weight:500;font-size:clamp(18px,2.2vw,24px);color:#4A231A;">¿Quieres saber qué más tenemos hoy en la brasa?</p>
+      <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:16px 32px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;transition:background .2s ease,transform .2s ease;" style-hover="background:var(--accent-dark);transform:translateY(-2px);">Llamar y preguntar</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between;margin-top:40px;padding-top:36px;border-top:1px solid rgba(74,35,26,0.15);">
+      <p style="font-family:'Oswald',sans-serif;font-weight:500;font-size:clamp(18px,2.2vw,24px);color:#4A231A;">Want to know what's on the grill today?</p>
+      <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:16px 32px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;transition:background .2s ease,transform .2s ease;" style-hover="background:var(--accent-dark);transform:translateY(-2px);">Call and ask</a>
+    </div>
+  </sc-if>
+</section>
+
+<section id="sobre-bassalo" data-screen-label="Sobre Bassalo" ref="{{ setAboutRef }}" style="padding:clamp(36px,4.5vw,68px) clamp(20px,5vw,48px);background:color-mix(in oklch, #F9F6F0 92%, #4A231A 8%);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);{{ aboutRevealStyle }}">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,52px);align-items:center;">
+    <div style="flex:1 1 340px;position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -30px rgba(44,37,35,0.45);">
+      <img src="images/cazuela-bassalo.webp" alt="Cocina de Bassalo" style="width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute;inset:0;background:linear-gradient(160deg, rgba(74,35,26,0.35), rgba(44,37,35,0.2));mix-blend-mode:multiply;"></div>
+    </div>
+    <div style="flex:1 1 420px;">
+      <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Sobre Bassalo</div>
+        <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,50px);color:#4A231A;margin-top:10px;">Un mesón de los de toda la vida</h2>
+        <p style="font-family:'Lato',sans-serif;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:#2C2523;margin-top:14px;">Bassalo lleva años siendo el sitio al que se vuelve en Yecla: mesas compartidas, la brasa encendida y esa sensación de que aquí se cocina como en casa, no como en un restaurante cualquiera.</p>
+        <p style="font-family:'Lato',sans-serif;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:#2C2523;margin-top:10px;">Cuidamos cada detalle del producto — carnes seleccionadas, verdura de temporada, recetas heredadas — para que cada visita sepa exactamente igual de bien que la anterior.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Brasa de leña</span>
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Producto de cercanía</span>
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Recetas de siempre</span>
+        </div>
+        <p style="font-family:'Oswald',sans-serif;font-weight:500;font-style:italic;font-size:clamp(18px,2vw,22px);color:#4A231A;margin-top:20px;border-left:3px solid var(--accent);padding-left:18px;">"Se cocina con fuego de verdad, como siempre se ha hecho."</p>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">About Bassalo</div>
+        <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,50px);color:#4A231A;margin-top:10px;">A true local favorite</h2>
+        <p style="font-family:'Lato',sans-serif;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:#2C2523;margin-top:14px;">Bassalo has long been the place people come back to in Yecla: shared tables, a lit grill, and food that tastes like home — not just another restaurant.</p>
+        <p style="font-family:'Lato',sans-serif;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:#2C2523;margin-top:10px;">We take care of every detail of the product — selected meats, seasonal vegetables, recipes passed down through the family — so every visit tastes exactly as good as the last.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Wood-fire grill</span>
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Local produce</span>
+          <span style="background:color-mix(in oklch, var(--accent) 14%, #F9F6F0);color:#4A231A;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.03em;padding:9px 18px;border-radius:24px;">Recipes from home</span>
+        </div>
+        <p style="font-family:'Oswald',sans-serif;font-weight:500;font-style:italic;font-size:clamp(18px,2vw,22px);color:#4A231A;margin-top:20px;border-left:3px solid var(--accent);padding-left:18px;">"We cook with real fire, just like it's always been done."</p>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<section id="resenas" data-screen-label="Reseñas" ref="{{ setResenasRef }}" style="padding:clamp(48px,6vw,92px) clamp(20px,5vw,48px);max-width:1280px;margin:0 auto;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);{{ resenasRevealStyle }}">
+  <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+  <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+    <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Opiniones</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#4A231A;margin-top:10px;max-width:640px;">Los que han pasado por aquí</h2>
+    <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#2C2523;max-width:640px;margin-top:18px;">Esto es lo que dicen quienes ya se han sentado a nuestra mesa.</p>
+  </sc-if>
+  <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+    <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Reviews</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#4A231A;margin-top:10px;max-width:640px;">The people who've been here</h2>
+    <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#2C2523;max-width:640px;margin-top:18px;">Here's what the people who've already sat at our table have to say.</p>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,32px);margin-top:40px;">
+    <div style="position:relative;background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;padding:32px 26px 26px;box-shadow:0 20px 40px -28px rgba(44,37,35,0.3);">
+      <div style="font-family:'Oswald',sans-serif;font-size:64px;line-height:1;color:color-mix(in oklch, var(--accent) 30%, #F9F6F0);position:absolute;top:6px;left:20px;">"</div>
+      <div style="color:#D35400;font-size:15px;letter-spacing:0.1em;margin-top:26px;">★★★★★</div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">Como en casa pero mejor. El secreto ibérico a la brasa es una pasada y el trato no falla nunca.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">María G. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Cliente de Facebook</span></p>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">Just like home, only better. The grilled Iberian secreto is amazing and the service never disappoints.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">María G. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Facebook review</span></p>
+      </sc-if>
+    </div>
+    <div style="position:relative;background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;padding:32px 26px 26px;box-shadow:0 20px 40px -28px rgba(44,37,35,0.3);">
+      <div style="font-family:'Oswald',sans-serif;font-size:64px;line-height:1;color:color-mix(in oklch, var(--accent) 30%, #F9F6F0);position:absolute;top:6px;left:20px;">"</div>
+      <div style="color:#D35400;font-size:15px;letter-spacing:0.1em;margin-top:26px;">★★★★★</div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">Venimos de Yecla toda la vida y Bassalo sigue siendo nuestra referencia para una buena comida de mesón.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">Antonio R. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Cliente de Google</span></p>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">We've been coming from Yecla our whole lives, and Bassalo is still our go-to for a proper meal.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">Antonio R. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Google review</span></p>
+      </sc-if>
+    </div>
+    <div style="position:relative;background:#F9F6F0;border:1px solid rgba(74,35,26,0.12);border-radius:14px;padding:32px 26px 26px;box-shadow:0 20px 40px -28px rgba(44,37,35,0.3);">
+      <div style="font-family:'Oswald',sans-serif;font-size:64px;line-height:1;color:color-mix(in oklch, var(--accent) 30%, #F9F6F0);position:absolute;top:6px;left:20px;">"</div>
+      <div style="color:#D35400;font-size:15px;letter-spacing:0.1em;margin-top:26px;">★★★★★</div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">La cazuela de barro y el foie de postre, un acierto seguro. Reservamos siempre que podemos.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">Lucía M. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Cliente de Facebook</span></p>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:'Lato',sans-serif;font-size:15.5px;line-height:1.65;color:#2C2523;margin-top:14px;">The clay-pot stew and the foie for dessert never fail. We book a table whenever we can.</p>
+        <p style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:#4A231A;margin-top:18px;">Lucía M. <span style="font-family:'Lato',sans-serif;font-weight:400;color:#2C2523;opacity:0.6;">— Facebook review</span></p>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+    <p style="text-align:center;margin-top:32px;font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;">¿Nos has visitado? <a href="https://www.facebook.com/p/Restaurante-Bassalo-100054258261723/?locale=es_ES" target="_blank" rel="noopener" style="color:#D35400;font-weight:700;">Cuéntanos tu experiencia en Facebook</a></p>
+  </sc-if>
+  <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+    <p style="text-align:center;margin-top:32px;font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;">Have you visited us? <a href="https://www.facebook.com/p/Restaurante-Bassalo-100054258261723/?locale=es_ES" target="_blank" rel="noopener" style="color:#D35400;font-weight:700;">Tell us about it on Facebook</a></p>
+  </sc-if>
+</section>
+
+<section id="reserva" data-screen-label="Reserva tu Mesa" ref="{{ setReservaRef }}" style="position:relative;padding:clamp(48px,6vw,92px) clamp(20px,5vw,48px);text-align:center;overflow:hidden;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);{{ reservaRevealStyle }}">
+  <img src="images/comedor-bassalo.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.80); z-index: 0"></div>
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+    <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+      <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Reservas</div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#F9F6F0;margin-top:10px;">Reserva tu mesa</h2>
+      <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#F9F6F0;opacity:0.85;margin-top:18px;">Las mesas en Bassalo vuelan, sobre todo los fines de semana. Llámanos y te la guardamos.</p>
+      <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:22px 48px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:0.03em;border-radius:8px;margin-top:36px;box-shadow:0 20px 40px -16px rgba(211,84,0,0.55);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 24px 46px -16px rgba(211,84,0,0.65);background:var(--accent-dark);">968 79 47 77</a>
+      <p style="font-family:'Lato',sans-serif;font-size:14px;color:#F9F6F0;opacity:0.7;margin-top:22px;">Martes cerrado · resto de la semana de 9:00 a 16:00</p>
+    </sc-if>
+    <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+      <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Reservations</div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,54px);color:#F9F6F0;margin-top:10px;">Reserve your table</h2>
+      <p style="font-family:'Lato',sans-serif;font-size:clamp(16px,1.6vw,18px);line-height:1.65;color:#F9F6F0;opacity:0.85;margin-top:18px;">Tables at Bassalo go fast, especially on weekends. Call us and we'll save yours.</p>
+      <a href="tel:+34968794777" style="display:inline-flex;align-items:center;padding:22px 48px;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:0.03em;border-radius:8px;margin-top:36px;box-shadow:0 20px 40px -16px rgba(211,84,0,0.55);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 24px 46px -16px rgba(211,84,0,0.65);background:var(--accent-dark);">968 79 47 77</a>
+      <p style="font-family:'Lato',sans-serif;font-size:14px;color:#F9F6F0;opacity:0.7;margin-top:22px;">Closed Tuesdays · open the rest of the week from 9:00 to 16:00</p>
+    </sc-if>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="Ubicación y Contacto" ref="{{ setContactoRef }}" style="padding:clamp(48px,6vw,92px) clamp(20px,5vw,48px);max-width:1280px;margin:0 auto;transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);{{ contactoRevealStyle }}">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,72px);">
+    <div style="flex:1 1 380px;">
+      <div style="width:56px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:18px;"></div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Cómo llegar</div>
+        <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,50px);color:#4A231A;margin-top:10px;">Ubicación y contacto</h2>
+        <div style="margin-top:28px;font-family:'Lato',sans-serif;font-size:16px;line-height:1.8;color:#2C2523;">
+          <p><strong style="color:#4A231A;">Dirección:</strong> C. Esperanza, 21, 30510 Yecla, Murcia</p>
+          <p style="margin-top:6px;"><strong style="color:#4A231A;">Teléfono:</strong> <a href="tel:+34968794777" style="color:#D35400;font-weight:700;">968 79 47 77</a></p>
+          <p style="margin-top:6px;"><strong style="color:#4A231A;">Facebook:</strong> <a href="https://www.facebook.com/p/Restaurante-Bassalo-100054258261723/?locale=es_ES" target="_blank" rel="noopener" style="color:#D35400;font-weight:700;">Restaurante Bassalo</a></p>
+        </div>
+        <div style="margin-top:30px;">
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Lunes<sc-if value="{{ isTodayMon }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Martes<sc-if value="{{ isTodayTue }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span style="color:color-mix(in oklch, #2C2523 55%, #F9F6F0 45%);">Cerrado</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Miércoles<sc-if value="{{ isTodayWed }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Jueves<sc-if value="{{ isTodayThu }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Viernes<sc-if value="{{ isTodayFri }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Sábado<sc-if value="{{ isTodaySat }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Domingo<sc-if value="{{ isTodaySun }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">HOY</span></sc-if></span><span>9:00–16:00</span></div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=C.+Esperanza,+21,+30510+Yecla,+Murcia" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 32px;background:#4A231A;color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;margin-top:32px;transition:transform .2s ease;" style-hover="transform:translateY(-2px);">Cómo llegar</a>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#D35400;">Find Us</div>
+        <h2 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,5vw,50px);color:#4A231A;margin-top:10px;">Location and contact</h2>
+        <div style="margin-top:28px;font-family:'Lato',sans-serif;font-size:16px;line-height:1.8;color:#2C2523;">
+          <p><strong style="color:#4A231A;">Address:</strong> C. Esperanza, 21, 30510 Yecla, Murcia</p>
+          <p style="margin-top:6px;"><strong style="color:#4A231A;">Phone:</strong> <a href="tel:+34968794777" style="color:#D35400;font-weight:700;">968 79 47 77</a></p>
+          <p style="margin-top:6px;"><strong style="color:#4A231A;">Facebook:</strong> <a href="https://www.facebook.com/p/Restaurante-Bassalo-100054258261723/?locale=es_ES" target="_blank" rel="noopener" style="color:#D35400;font-weight:700;">Restaurante Bassalo</a></p>
+        </div>
+        <div style="margin-top:30px;">
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Monday<sc-if value="{{ isTodayMon }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Tuesday<sc-if value="{{ isTodayTue }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span style="color:color-mix(in oklch, #2C2523 55%, #F9F6F0 45%);">Closed</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Wednesday<sc-if value="{{ isTodayWed }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Thursday<sc-if value="{{ isTodayThu }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Friday<sc-if value="{{ isTodayFri }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(74,35,26,0.12);font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Saturday<sc-if value="{{ isTodaySat }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0;font-family:'Lato',sans-serif;font-size:15px;color:#2C2523;"><span style="display:flex;align-items:center;gap:8px;">Sunday<sc-if value="{{ isTodaySun }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:4px;">TODAY</span></sc-if></span><span>9:00–16:00</span></div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=C.+Esperanza,+21,+30510+Yecla,+Murcia" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:16px 32px;background:#4A231A;color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;border-radius:8px;margin-top:32px;transition:transform .2s ease;" style-hover="transform:translateY(-2px);">Get directions</a>
+      </sc-if>
+    </div>
+    <div style="flex:1 1 380px;min-height:420px;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(44,37,35,0.4);">
+      <iframe src="https://www.google.com/maps?q=C.+Esperanza,+21,+30510+Yecla,+Murcia&amp;output=embed" width="100%" height="100%" style="border:0;min-height:420px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Restaurante Bassalo"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#2C2523;padding:48px clamp(20px,5vw,48px) 36px;text-align:center;">
+  <img src="images/logo-bassalo.png" alt="Restaurante Bassalo" style="height:64px;margin:0 auto;filter:brightness(0) invert(1);opacity:0.92;">
+  <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">
+    <p style="font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#F9F6F0;opacity:0.75;margin-top:18px;">Mesón · Restaurante · Barbacoa</p>
+    <p style="font-family:'Lato',sans-serif;font-size:13px;color:#F9F6F0;opacity:0.5;margin-top:14px;">© 2026 Restaurante Bassalo · Yecla, Murcia · Todos los derechos reservados</p>
+  </sc-if>
+  <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+    <p style="font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#F9F6F0;opacity:0.75;margin-top:18px;">Inn · Restaurant · Grill House</p>
+    <p style="font-family:'Lato',sans-serif;font-size:13px;color:#F9F6F0;opacity:0.5;margin-top:14px;">© 2026 Restaurante Bassalo · Yecla, Murcia · All rights reserved</p>
+  </sc-if>
+</footer>
+
+<sc-if value="{{ showFloatingCall }}" hint-placeholder-val="{{ true }}">
+  <a href="tel:+34968794777" style="position:fixed;bottom:22px;right:22px;z-index:400;display:inline-flex;align-items:center;background:var(--accent);color:#F9F6F0;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.03em;text-transform:uppercase;padding:16px 26px;border-radius:8px;box-shadow:0 16px 32px -12px rgba(44,37,35,0.5);transition:transform .2s ease;" style-hover="transform:translateY(-3px);">
+    <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}">Llamar ahora</sc-if>
+    <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">Call now</sc-if>
+  </a>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D35400&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#D35400&quot;,&quot;#C0392B&quot;],&quot;section&quot;:&quot;Marca&quot;},&quot;defaultLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;section&quot;:&quot;Idioma&quot;},&quot;showFloatingCallButton&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = {
+    lang: 'es',
+    scrolled: false,
+    mobileNavOpen: false,
+    isMobile: false,
+    heroParallax: 0,
+    revealed: { carta: false, about: false, resenas: false, reserva: false, contacto: false },
+    statusIsOpen: false,
+    statusTextEs: '',
+    statusTextEn: '',
+    todayIndex: 0
+  };
+
+  componentDidMount() {
+    if (this.props && this.props.defaultLanguage === 'en') {
+      this.setState({ lang: 'en' });
+    }
+
+    this._sectionIds = { carta: 'carta', about: 'sobre-bassalo', resenas: 'resenas', reserva: 'reserva', contacto: 'contacto' };
+    this._raf = null;
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        const threshold = window.innerHeight * 0.55;
+        this.setState({ scrolled: y > threshold, heroParallax: Math.min(y * 0.22, 120) });
+
+        const revealLine = window.innerHeight * 0.85;
+        const toReveal = {};
+        let changed = false;
+        Object.keys(this._sectionIds).forEach((key) => {
+          if (this.state.revealed[key]) return;
+          const el = document.getElementById(this._sectionIds[key]);
+          if (el && el.getBoundingClientRect().top < revealLine) {
+            toReveal[key] = true;
+            changed = true;
+          }
+        });
+        if (changed) {
+          this.setState((s) => ({ revealed: Object.assign({}, s.revealed, toReveal) }));
+        }
+        this._raf = null;
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    this._onResize = () => {
+      this.setState({ isMobile: window.innerWidth < 880 });
+      this._onScroll();
+    };
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
+
+    this.updateStatus();
+    this._statusInterval = setInterval(() => this.updateStatus(), 60000);
+    this.tryPlayHeroVideo();
+  }
+
+  tryPlayHeroVideo() {
+    if (!this.heroVideoRef) return;
+    this.heroVideoRef.muted = true;
+    this.heroVideoRef.volume = 0;
+    const p = this.heroVideoRef.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._statusInterval) clearInterval(this._statusInterval);
+  }
+
+  updateStatus() {
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const closedDays = [2];
+    const openH = 9, closeH = 16;
+    const isOpenToday = closedDays.indexOf(day) === -1;
+    const isOpenNow = isOpenToday && hour >= openH && hour < closeH;
+    const dayNamesEs = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const dayNamesEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let textEs, textEn;
+    if (isOpenNow) {
+      textEs = 'La brasa está encendida — llama y ven';
+      textEn = 'The grill is lit — call and come by';
+    } else if (isOpenToday && hour < openH) {
+      textEs = 'Hoy abrimos a las 9:00';
+      textEn = 'We open today at 9:00';
+    } else {
+      let daysAhead = 1, label = null;
+      while (daysAhead <= 7) {
+        const candidate = (day + daysAhead) % 7;
+        if (closedDays.indexOf(candidate) === -1) {
+          label = daysAhead === 1 ? { es: 'mañana', en: 'tomorrow' } : { es: dayNamesEs[candidate], en: dayNamesEn[candidate] };
+          break;
+        }
+        daysAhead++;
+      }
+      textEs = 'Hoy la brasa está apagada — abrimos ' + label.es + ' a las 9:00';
+      textEn = 'The grill is off today — we open ' + label.en + ' at 9:00';
+    }
+    const todayIndex = (day + 6) % 7;
+    this.setState({ statusIsOpen: isOpenNow, statusTextEs: textEs, statusTextEn: textEn, todayIndex: todayIndex });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const isEs = s.lang === 'es';
+    const isEn = s.lang === 'en';
+
+    const headerBaseStyle = 'position:fixed;top:0;left:0;right:0;z-index:500;transition:padding .35s ease;padding:' + (s.scrolled ? '10px 0' : '22px 0') + ';';
+    const headerGradientLayerStyle = 'position:absolute;inset:0;pointer-events:none;transition:opacity .45s ease;opacity:' + (s.scrolled ? '0' : '1') + ';background:linear-gradient(180deg, rgba(249,246,240,0.97) 0%, rgba(249,246,240,0.95) 15%, rgba(249,246,240,0.92) 30%, rgba(249,246,240,0.87) 45%, rgba(249,246,240,0.78) 60%, rgba(249,246,240,0.6) 75%, rgba(249,246,240,0.32) 90%, rgba(249,246,240,0) 100%);';
+    const headerSolidLayerStyle = 'position:absolute;inset:0;pointer-events:none;transition:opacity .45s ease;opacity:' + (s.scrolled ? '1' : '0') + ';background:#F9F6F0;box-shadow:0 8px 30px -12px rgba(44,37,35,0.25);';
+
+    const logoHeightStyle = 'height:' + (s.scrolled ? '44px' : '56px') + ';transition:height .35s ease;filter:drop-shadow(0 2px 8px rgba(44,37,35,0.18));';
+    const desktopNavDisplay = s.isMobile ? 'display:none;' : 'display:flex;align-items:center;gap:clamp(18px,2.4vw,36px);';
+    const hamburgerDisplay = s.isMobile ? 'display:flex;' : 'display:none;';
+    const headerPhoneDisplay = s.isMobile ? 'display:none;' : 'display:inline-flex;';
+    const navLinkColor = '#4A231A';
+
+    const mobileNavStyle = 'position:fixed;inset:0;z-index:600;background:#2C2523;transition:opacity .35s ease,visibility .35s ease;' +
+      (s.mobileNavOpen ? 'opacity:1;visibility:visible;' : 'opacity:0;visibility:hidden;');
+
+    const heroImgStyle = 'transform:translateY(' + s.heroParallax + 'px) scale(1.12);';
+
+    const revealStyle = (key) => s.revealed[key] ? 'opacity:1;transform:translateY(0);' : 'opacity:0;transform:translateY(28px);';
+
+    const statusDotStyle = 'width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;' +
+      (s.statusIsOpen ? 'background:var(--accent);animation:emberPulse 1.8s ease-in-out infinite;' : 'background:color-mix(in oklch, #2C2523 60%, #F9F6F0 40%);');
+
+    return {
+      isEs: isEs,
+      isEn: isEn,
+      accent: (this.props && this.props.accentColor) || '#D35400',
+      setLangEs: () => this.setState({ lang: 'es' }),
+      setLangEn: () => this.setState({ lang: 'en' }),
+      langEsStyle: 'font-weight:' + (isEs ? '700' : '400') + ';opacity:' + (isEs ? '1' : '0.55') + ';',
+      langEnStyle: 'font-weight:' + (isEn ? '700' : '400') + ';opacity:' + (isEn ? '1' : '0.55') + ';',
+      headerBaseStyle: headerBaseStyle,
+      headerGradientLayerStyle: headerGradientLayerStyle,
+      headerSolidLayerStyle: headerSolidLayerStyle,
+      logoHeightStyle: logoHeightStyle,
+      desktopNavDisplay: desktopNavDisplay,
+      hamburgerDisplay: hamburgerDisplay,
+      headerPhoneDisplay: headerPhoneDisplay,
+      navLinkColor: navLinkColor,
+      openMobileNav: () => this.setState({ mobileNavOpen: true }),
+      closeMobileNav: () => this.setState({ mobileNavOpen: false }),
+      mobileNavStyle: mobileNavStyle,
+      heroImgStyle: heroImgStyle,
+      setHeroVideoRef: (el) => { this.heroVideoRef = el; this.tryPlayHeroVideo(); },
+      setCartaRef: (el) => { this.cartaRef = el; },
+      setAboutRef: (el) => { this.aboutRef = el; },
+      setResenasRef: (el) => { this.resenasRef = el; },
+      setReservaRef: (el) => { this.reservaRef = el; },
+      setContactoRef: (el) => { this.contactoRef = el; },
+      cartaRevealStyle: revealStyle('carta'),
+      aboutRevealStyle: revealStyle('about'),
+      resenasRevealStyle: revealStyle('resenas'),
+      reservaRevealStyle: revealStyle('reserva'),
+      contactoRevealStyle: revealStyle('contacto'),
+      statusTextEs: s.statusTextEs,
+      statusTextEn: s.statusTextEn,
+      statusDotStyle: statusDotStyle,
+      isTodayMon: s.todayIndex === 0,
+      isTodayTue: s.todayIndex === 1,
+      isTodayWed: s.todayIndex === 2,
+      isTodayThu: s.todayIndex === 3,
+      isTodayFri: s.todayIndex === 4,
+      isTodaySat: s.todayIndex === 5,
+      isTodaySun: s.todayIndex === 6,
+      showFloatingCall: (this.props && this.props.showFloatingCallButton) !== false
+    };
+  }
+}
+</script>
+</body>
+</html>
