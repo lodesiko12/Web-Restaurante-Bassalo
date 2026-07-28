@@ -120,13 +120,13 @@ html[lang="en"] .es{display:none !important}
 
 .header-actions{display:flex;align-items:center;gap:clamp(12px,2vw,20px)}
 .lang-switch{display:flex;align-items:center;gap:6px;font-family:var(--display);font-size:13px;letter-spacing:.04em}
-.lang-switch button{background:none;border:none;padding:4px 2px;color:var(--brown);font-weight:400;opacity:.55}
+.lang-switch button{background:none;border:none;padding:8px 6px;color:var(--brown);font-weight:400;opacity:.55}
 .lang-switch button.active{font-weight:700;opacity:1}
 .lang-switch .sep{color:var(--brown);opacity:.4}
 
 .header-phone{font-size:14px;padding:12px 22px}
 
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:none;padding:8px;min-width:44px;min-height:44px}
 .hamburger i{display:block;width:24px;height:2px;background:var(--brown)}
 
 @media (max-width:879px){
@@ -365,6 +365,21 @@ html[lang="en"] .es{display:none !important}
   text-transform:uppercase;box-shadow:0 16px 32px -12px rgba(44,37,35,.5);
 }
 .floating-call:hover{transform:translateY(-3px)}
+
+/* ============================================================
+   12b. Ajustes finos para móvil
+   ============================================================ */
+@media (max-width:600px){
+  /* Contenido del hero más compacto para que quepa en una pantalla
+     y la fila de datos no choque con la flecha inferior. */
+  .hero-inner{padding:112px var(--pad-x) 44px}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero-lead{margin-top:18px}
+  .hero-cta{margin-top:24px;gap:20px}
+  .hero-meta{margin-top:24px}
+  /* La flecha de "baja" es decorativa; en móvil sobra y podía solaparse. */
+  .hero-chevron{display:none}
+}
 
 /* ============================================================
    13. Accesibilidad — movimiento reducido
