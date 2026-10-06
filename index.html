@@ -312,7 +312,12 @@ html[lang="en"] .es{display:none !important}
 .btn-reserva:hover{transform:translateY(-3px);box-shadow:0 24px 46px -16px rgba(211,84,0,.65)}
 .reserva-note{font-size:14px;color:var(--cream);opacity:.7;margin-top:22px}
 .reserva-note a{color:var(--cream);text-decoration:underline}
-.reserva-widget{margin-top:32px;text-align:left}
+.reserva-widget{
+  margin:34px auto 0;max-width:560px;text-align:left;padding:10px;border-radius:18px;
+  background:rgba(249,246,240,.06);border:1px solid rgba(249,246,240,.16);
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.7);backdrop-filter:blur(6px);
+}
+.reserva-widget iframe{border-radius:12px}
 
 /* ============================================================
    11. Ubicación y contacto
@@ -474,7 +479,7 @@ html[lang="en"] .es{display:none !important}
       <h1 class="fu fu-2">Brasa de siempre,<br>sabor de casa.</h1>
       <p class="hero-lead fu fu-3">En Bassalo cuidamos cada plato como en casa: producto cercano, brasa de leña y las recetas que nos han hecho mesón de referencia en Yecla.</p>
       <div class="hero-cta fu fu-4">
-        <a class="btn btn-accent btn-hero" href="tel:+34968794777">Llamar para pedir</a>
+        <a class="btn btn-accent btn-hero" href="#reserva">Reservar mesa</a>
         <a class="link-ghost" href="#carta">Ver la carta ↓</a>
       </div>
       <div class="hero-meta fu fu-5">
@@ -488,7 +493,7 @@ html[lang="en"] .es{display:none !important}
       <h1 class="fu fu-2">Wood-fire flavor,<br>home-style cooking.</h1>
       <p class="hero-lead fu fu-3">At Bassalo we treat every dish like home cooking: local produce, real wood-fire grilling, and the recipes that made us a Yecla favorite.</p>
       <div class="hero-cta fu fu-4">
-        <a class="btn btn-accent btn-hero" href="tel:+34968794777">Call to order</a>
+        <a class="btn btn-accent btn-hero" href="#reserva">Book a table</a>
         <a class="link-ghost" href="#carta">See the menu ↓</a>
       </div>
       <div class="hero-meta fu fu-5">
@@ -716,7 +721,7 @@ html[lang="en"] .es{display:none !important}
       <p class="reserva-lead">Tables at Bassalo go fast, especially on weekends. Book online in a minute.</p>
       <p class="reserva-note">Closed Tuesdays · open the rest of the week from 9:00 to 16:00</p>
     </div>
-    <div class="reserva-widget"><div id="reservas-widget" data-slug="bassalo"></div></div>
+    <div class="reserva-widget"><div id="reservas-widget" data-slug="bassalo" data-theme="dark" data-accent="#D35400"></div></div>
     <p class="reserva-note"><span class="lang es">¿Prefieres llamar?</span><span class="lang en">Prefer to call?</span> <a href="tel:+34968794777">968 79 47 77</a></p>
   </div>
 </section>
