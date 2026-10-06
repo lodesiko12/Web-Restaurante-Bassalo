@@ -311,6 +311,8 @@ html[lang="en"] .es{display:none !important}
 }
 .btn-reserva:hover{transform:translateY(-3px);box-shadow:0 24px 46px -16px rgba(211,84,0,.65)}
 .reserva-note{font-size:14px;color:var(--cream);opacity:.7;margin-top:22px}
+.reserva-note a{color:var(--cream);text-decoration:underline}
+.reserva-widget{margin-top:32px;text-align:left}
 
 /* ============================================================
    11. Ubicación y contacto
@@ -428,7 +430,7 @@ html[lang="en"] .es{display:none !important}
         <span class="sep">/</span>
         <button type="button" data-lang="en">EN</button>
       </div>
-      <a class="btn btn-accent header-phone" href="tel:+34968794777">968 79 47 77</a>
+      <a class="btn btn-accent header-phone" href="#reserva">Reservar mesa</a>
       <button type="button" class="hamburger" aria-label="Abrir menú" aria-controls="mobile-nav" aria-expanded="false">
         <i></i><i></i><i></i>
       </button>
@@ -446,7 +448,7 @@ html[lang="en"] .es{display:none !important}
       <a href="#resenas">Reseñas</a>
       <a href="#reserva">Reserva</a>
       <a href="#contacto">Contacto</a>
-      <a class="btn btn-accent" href="tel:+34968794777">Llamar: 968 79 47 77</a>
+      <a class="btn btn-accent" href="#reserva">Reservar mesa</a>
     </div>
     <div class="lang en">
       <a href="#carta">Menu</a>
@@ -454,7 +456,7 @@ html[lang="en"] .es{display:none !important}
       <a href="#resenas">Reviews</a>
       <a href="#reserva">Reservations</a>
       <a href="#contacto">Contact</a>
-      <a class="btn btn-accent" href="tel:+34968794777">Call: 968 79 47 77</a>
+      <a class="btn btn-accent" href="#reserva">Book a table</a>
     </div>
   </div>
 </div>
@@ -705,17 +707,17 @@ html[lang="en"] .es{display:none !important}
     <div class="lang es">
       <div class="eyebrow">Reservas</div>
       <h2>Reserva tu mesa</h2>
-      <p class="reserva-lead">Las mesas en Bassalo vuelan, sobre todo los fines de semana. Llámanos y te la guardamos.</p>
-      <a class="btn btn-accent btn-reserva" href="tel:+34968794777">968 79 47 77</a>
+      <p class="reserva-lead">Las mesas en Bassalo vuelan, sobre todo los fines de semana. Reserva online en un minuto.</p>
       <p class="reserva-note">Martes cerrado · resto de la semana de 9:00 a 16:00</p>
     </div>
     <div class="lang en">
       <div class="eyebrow">Reservations</div>
       <h2>Reserve your table</h2>
-      <p class="reserva-lead">Tables at Bassalo go fast, especially on weekends. Call us and we'll save yours.</p>
-      <a class="btn btn-accent btn-reserva" href="tel:+34968794777">968 79 47 77</a>
+      <p class="reserva-lead">Tables at Bassalo go fast, especially on weekends. Book online in a minute.</p>
       <p class="reserva-note">Closed Tuesdays · open the rest of the week from 9:00 to 16:00</p>
     </div>
+    <div class="reserva-widget"><div id="reservas-widget" data-slug="bassalo"></div></div>
+    <p class="reserva-note"><span class="lang es">¿Prefieres llamar?</span><span class="lang en">Prefer to call?</span> <a href="tel:+34968794777">968 79 47 77</a></p>
   </div>
 </section>
 
@@ -787,11 +789,12 @@ html[lang="en"] .es{display:none !important}
   </div>
 </footer>
 
-<a class="btn btn-accent floating-call" href="tel:+34968794777">
-  <span class="lang es">Llamar ahora</span>
-  <span class="lang en">Call now</span>
+<a class="btn btn-accent floating-call" href="#reserva">
+  <span class="lang es">Reservar mesa</span>
+  <span class="lang en">Book a table</span>
 </a>
 
+<script src="https://turnigo-widget.lodesiko12.workers.dev/embed.js" async></script>
 <script>
 (function () {
   'use strict';
